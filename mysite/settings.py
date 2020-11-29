@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',
     'todo.apps.TodoConfig',
+    'crud.apps.CrudConfig',
 ]
 
 MIDDLEWARE = [
