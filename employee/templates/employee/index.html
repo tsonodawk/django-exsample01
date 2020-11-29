@@ -1,0 +1,55 @@
+{# {% extends 'commons/subwinbase.html' %} #}
+{% extends 'commons/base.html' %}
+
+{% load static %}
+
+{% block links %}
+<link href="{% static 'css/pagination.css' %}" rel="stylesheet">
+<style media="screen">
+  .pagination > div {
+    display: inline-block;
+  }
+</style>
+{% endblock %}
+
+{% block headertitle %}
+一覧
+{% endblock %}
+
+{% block content %}
+
+  <table class="table table-striped table-bordered　table-sm">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>氏名</th>
+        <th>年齢</th>
+        <th>生年月日</th>
+        <th>入社年月日</th>
+        <th>退職年月日</th>
+        <th><a href="{% url 'employee:create' %}" class="btn btn-primary btn-sm">追加</a></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for employee in object_list %}
+      <tr>
+        <td>{{ employee.id }}</td>
+        <td>{{ employee.name }}</td>
+        <td>{{ employee.age }}</td>
+        <td>{{ employee.birthday|default_if_none:"" }}</td>
+        <td>{{ employee.hiredate|default_if_none:"" }}</td>
+        <td>{{ employee.retiredate|default_if_none:"" }}</td>
+        <td>
+          <a href="{% url 'employee:update' employee.pk %}" class="btn btn-info btn-sm">修正</a>
+          <a href="{% url 'employee:delete' employee.pk %}" class="btn btn-danger btn-sm">削除</a>
+          <a href="{% url 'employee:detail' employee.pk %}" onclick="OpenSubWin(this);return false;" class="btn btn-success btn-sm">照会</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <br/>
+  <!-- pagination -->
+  {% include 'commons/pagination2.html' %}
+{% endblock %}
