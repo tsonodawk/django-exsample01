@@ -25,7 +25,7 @@ SECRET_KEY = 'isyuzcpe&bo^uc60!u9t58ljeh!0y=657e^2)58^lg(b&)%5r@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.pythonanywhere.com']
 
 
 # Application definition
@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'todo.apps.TodoConfig',
     'crud.apps.CrudConfig',
     'employee',
+    'crispy_forms',
+    'app',
 ]
 
 MIDDLEWARE = [
@@ -125,3 +127,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+# 管理サイトのログイン機能を通常のログイン機能として使う
+LOGIN_URL = 'admin:login'
+LOGOUT_REDIRECT_URL = '/'
+
+# django-crispy-forms 設定
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
