@@ -24,4 +24,6 @@ urlpatterns = [
     path('todo/', include('todo.urls')),
     path('crud/', include('crud.urls')),
     path('employee/', include('employee.urls')),
+    path('app/', include('app.urls')),
+    path('pdfmr/', include('pdfmr.urls')),
 ]

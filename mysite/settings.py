@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'employee',
     'crispy_forms',
     'app',
+    'pdfmr',
 ]
 
 MIDDLEWARE = [
